@@ -6,7 +6,24 @@ SYSTEM_PROMPT = '''Your are a helpful, cheerful database assistant.
 Use the following database schema when creating your answers:
 {
     "tables": [
-                {
+    {
+        "table_name":"KomliAdServer.publisher",
+        "fields": [{"name": "id","display_name": "Id","description": null,"effective_type": "type/Integer"},
+            {"name": "first_name","display_name": "First Name","description": null,"effective_type": "type/Text"},
+            {"name": "last_name","display_name": "Last Name","description": null,"effective_type": "type/Text"},
+            {"name": "email","display_name": "Email","description": null,"effective_type": "type/Text"},
+            {"name": "url","display_name": "Url","description": null,"effective_type": "type/Text"},
+            {"name": "company_name","display_name": "Company Name","description": "we can also call this as Publisher Name","effective_type": "type/Text"},
+            {"name": "signup_time","display_name": "Signup Time","description": null,"effective_type": "type/DateTime"},
+            {"name": "pub_type","display_name": "Publisher Type","description": null,"effective_type": "type/Integer"},
+            {"name": "is_rss_report_enabled","display_name": "Is RSS Report Enabled","description": null,"effective_type": "type/Boolean"},
+            {"name": "rss_key","display_name": "RSS Key","description": null,"effective_type": "type/Integer"},
+            {"name": "is_disable","display_name": "Is Disabled","description": null,"effective_type": "type/Boolean"},
+            {"name": "publisher_email_alias","display_name": "Publisher Email Alias","description": null,"effective_type": "type/Text"},
+            {"name": "onboard_state","display_name": "Onboard State","description": null,"effective_type": "type/Integer"},
+            {"name": "onboarding_purpose","display_name": "Onboarding Purpose","description": null,"effective_type": "type/Integer"},
+            {"name": "modification_time","display_name": "Modification Time","description": null,"effective_type": "type/DateTime"}]
+        },{
             "table_name": "DATABASECHANGELOG",
             "fields": [{"name": "ID","display_name": "Id","description": null,"effective_type": "type/Text"},
                 {"name": "AUTHOR","display_name": "Author","description": null,"effective_type": "type/Text"},
@@ -446,7 +463,7 @@ Use the following database schema when creating your answers:
                 {
             "table_name": "wrapper_adserver",
             "fields": [{"name": "id","display_name": "Id","description": null,"effective_type": "type/Integer"},
-                {"name": "name","display_name": "Name","description": null,"effective_type": "type/Text"},
+                {"name": "name","display_name": "Name","description": "this is the adserver which was selected while creating a profile version, the values can be DFP, CUSTOM, UAS, MoPub, AppLovin Max, Publica, SpringServe","effective_type": "type/Text"},
                 {"name": "description","display_name": "Description","description": null,"effective_type": "type/Text"}
             ]
         },
@@ -527,7 +544,7 @@ Use the following database schema when creating your answers:
                 {
             "table_name": "wrapper_cmpids",
             "fields": [{"name": "id","display_name": "Id","description": null,"effective_type": "type/Integer"},
-                {"name": "value","display_name": "Value","description": null,"effective_type": "type/Text"},
+                {"name": "value","display_name": "Value","description": "Names of the CMP","effective_type": "type/Text"},
                 {"name": "modification_timestamp","display_name": "Modification Timestamp","description": null,"effective_type": "type/DateTimeWithLocalTZ"}
             ]
         },
@@ -772,12 +789,12 @@ Use the following database schema when creating your answers:
                 {
             "table_name": "wrapper_partner",
             "fields": [{"name": "id","display_name": "Id","description": null,"effective_type": "type/BigInteger"},
-                {"name": "name","display_name": "Name","description": null,"effective_type": "type/Text"},
+                {"name": "name","display_name": "Name","description": "name of the partners or alias of the partner in our system e.g: pubmatic, appnexus, 33across, gumgum","effective_type": "type/Text"},
                 {"name": "display_name","display_name": "Display Name","description": null,"effective_type": "type/Text"},
-                {"name": "prebid_partner_name","display_name": "Prebid Partner Name","description": null,"effective_type": "type/Text"},
+                {"name": "prebid_partner_name","display_name": "Prebid Partner Name","description": "name of the partners or alias of the partner in Prebid e.g: pubmatic, appnexus etc","effective_type": "type/Text"},
                 {"name": "is_default","display_name": "Is Default","description": null,"effective_type": "type/Boolean"},
                 {"name": "type","display_name": "Type","description": null,"effective_type": "type/Boolean"},
-                {"name": "supported_integration","display_name": "Supported Integration","description": null,"effective_type": "type/Enum"},
+                {"name": "supported_integration","display_name": "Supported Integration","description": "possible value client, server, all","effective_type": "type/Enum"},
                 {"name": "gvl_id","display_name": "Gvl Id","description": null,"effective_type": "type/Integer"},
                 {"name": "certified_platform","display_name": "Certified Platform","description": null,"effective_type": "type/Text"}
             ]
@@ -836,7 +853,7 @@ Use the following database schema when creating your answers:
             "table_name": "wrapper_profile",
             "fields": [{"name": "id","display_name": "Id","description": null,"effective_type": "type/BigInteger"},
                 {"name": "name","display_name": "Name","description": null,"effective_type": "type/Text"},
-                {"name": "pub_id","display_name": "Pub Id","description": null,"effective_type": "type/BigInteger"},
+                {"name": "pub_id","display_name": "Pub Id","description": "for which publisher id this profile was created. one publisher can have multiple profiles","effective_type": "type/BigInteger"},
                 {"name": "is_disabled","display_name": "Is Disabled","description": null,"effective_type": "type/Boolean"},
                 {"name": "type","display_name": "Type","description": "1 means OpenWrap and 2 means IDhub or identity hub","effective_type": "type/Boolean"},
                 {"name": "api_version","display_name": "Api Version","description": null,"effective_type": "type/Boolean"},
@@ -909,13 +926,13 @@ Use the following database schema when creating your answers:
             "table_name": "wrapper_publisher_partner",
             "fields": [{"name": "id","display_name": "Id","description": null,"effective_type": "type/BigInteger"},
                 {"name": "pub_id","display_name": "Pub Id","description": null,"effective_type": "type/BigInteger"},
-                {"name": "partner_id","display_name": "Partner Id","description": null,"effective_type": "type/BigInteger"},
-                {"name": "partner_account_name","display_name": "Partner Account Name","description": null,"effective_type": "type/Text"},
+                {"name": "partner_id","display_name": "Partner Id","description": "Which partner id is associated with given publisher id. partner_id is fetched from wrapper_partner","effective_type": "type/BigInteger"},
+                {"name": "partner_account_name","display_name": "Partner Account Name","description": "this is the name accociated to a partner with our account e.g Pubmatic could be MyPubmatic or appnexus could be PublisherAppNexus","effective_type": "type/Text"},
                 {"name": "bidder_code","display_name": "Bidder Code","description": null,"effective_type": "type/Text"},
-                {"name": "is_alias","display_name": "Is Alias","description": null,"effective_type": "type/Boolean"},
+                {"name": "is_alias","display_name": "Is Alias","description": "defines if this ia alias or not","effective_type": "type/Boolean"},
                 {"name": "level","display_name": "Level","description": null,"effective_type": "type/Text"},
                 {"name": "is_pubmatic_alias","display_name": "Is Pubmatic Alias","description": null,"effective_type": "type/Boolean"},
-                {"name": "gvl_id","display_name": "Gvl Id","description": null,"effective_type": "type/Integer"}
+                {"name": "gvl_id","display_name": "Gvl Id","description": "global vender list id, this is related to every partner and alias. its a global list","effective_type": "type/Integer"}
             ]
         },
                 {
@@ -1057,8 +1074,8 @@ Use the following database schema when creating your answers:
         },{
             "table_name": "wrapper_version",
             "fields": [{"name": "id","display_name": "Id","description": null,"effective_type": "type/BigInteger"},
-                {"name": "display_version","display_name": "Display Version","description": null,"effective_type": "type/BigInteger"},
-                {"name": "profile_id","display_name": "Profile Id","description": null,"effective_type": "type/BigInteger"},
+                {"name": "display_version","display_name": "Display Version","display version on UI. one profile can have multiple versions and only one will have status LIVE, from wrapper_status table": null,"effective_type": "type/BigInteger"},
+                {"name": "profile_id","display_name": "Profile Id","id from wrapper_profile table": null,"effective_type": "type/BigInteger"},
                 {"name": "script_size","display_name": "Script Size","description": null,"effective_type": "type/Float"},
                 {"name": "comment","display_name": "Comment","description": null,"effective_type": "type/Text"},
                 {"name": "creation_time","display_name": "Creation Time","description": null,"effective_type": "type/DateTimeWithLocalTZ"},
@@ -1082,7 +1099,7 @@ Use the following database schema when creating your answers:
             "table_name": "wrapper_version_to_code_snippet",
             "fields": [{"name": "id","display_name": "Id","description": null,"effective_type": "type/BigInteger"},
                 {"name": "version_id","display_name": "Version Id","description": null,"effective_type": "type/BigInteger"},
-                {"name": "code","display_name": "Code","description": null,"effective_type": "type/Other"},
+                {"name": "code","display_name": "Code","description": "this stores content of the code snippet added by publishers","effective_type": "type/Other"},
                 {"name": "is_disabled","display_name": "Is Disabled","description": null,"effective_type": "type/Boolean"},
                 {"name": "type","display_name": "Type","description": null,"effective_type": "type/Boolean"},
                 {"name": "integration_mode","display_name": "Integration Mode","description": null,"effective_type": "type/Boolean"},
@@ -1114,766 +1131,66 @@ Use the following database schema when creating your answers:
         "scp_log": [{"constrained_columns": ["source"],"referred_table": "data_input_mode","referred_columns": ["id"],"name": "scp_log_ibfk_1"}],
         "unified_demand_source": [{"constrained_columns": ["source_type_id"],"referred_table": "demand_source_type","referred_columns": ["id"],"name": "unified_demand_source_ibfk_1"}],
         "wrapper_ad_integration_type": [{"constrained_columns": ["platform_id"],"referred_table": "wrapper_platform","referred_columns": ["id"],"name": "wrapper_ad_integration_type_ibfk_1"}],
-        "wrapper_ad_parameter": [
-            {
-                "constrained_columns": [
-                    "data_type"
-                ],
-                "referred_table": "wrapper_supported_datatype",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_ad_parameter_ibfk_1"
-            },{
-                "constrained_columns": [
-                    "parameter_group"
-                ],
-                "referred_table": "wrapper_ad_parameter_group",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_ad_parameter_ibfk_2"
-            }
-        ],
-        "wrapper_ad_parameter_dependency_map": [
-            {
-                "constrained_columns": [
-                    "parent_object_group"
-                ],
-                "referred_table": "wrapper_ad_parameter_group",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_ad_parameter_dependency_map_ibfk_1"
-            },
-            {
-                "constrained_columns": [
-                    "child_object_group"
-                ],
-                "referred_table": "wrapper_ad_parameter_group",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_ad_parameter_dependency_map_ibfk_2"
-            }
-        ],
-        "wrapper_ad_parameter_tag_type_mapping": [
-            {
-                "constrained_columns": [
-                    "parameter_id"
-                ],
-                "referred_table": "wrapper_ad_parameter",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_ad_parameter_tag_type_mapping_ibfk_1"
-            },
-            {
-                "constrained_columns": [
-                    "tag_type_id"
-                ],
-                "referred_table": "wrapper_tag_type",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_ad_parameter_tag_type_mapping_ibfk_2"
-            }
-        ],
-        "wrapper_ad_pod": [
-            {
-                "constrained_columns": [
-                    "version_id"
-                ],
-                "referred_table": "wrapper_version",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_ad_pod_fk_1"
-            }
-        ],
-        "wrapper_ad_unit_config": [
-            {
-                "constrained_columns": [
-                    "profile_id"
-                ],
-                "referred_table": "wrapper_profile",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_ad_unit_config_ibfk_1"
-            },
-            {
-                "constrained_columns": [
-                    "ad_unit_id"
-                ],
-                "referred_table": "wrapper_profile_site_adunit",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_ad_unit_config_ibfk_2"
-            },
-            {
-                "constrained_columns": [
-                    "config_id"
-                ],
-                "referred_table": "wrapper_config_keys",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_ad_unit_config_ibfk_3"
-            }
-        ],
-        "wrapper_adunit_config": [
-            {
-                "constrained_columns": [
-                    "adunit_id"
-                ],
-                "referred_table": "wrapper_profile_site_adunit",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "FK_adUnitId"
-            },
-            {
-                "constrained_columns": [
-                    "config_id"
-                ],
-                "referred_table": "wrapper_adunit_config_keys",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "FK_configId"
-            },
-            {
-                "constrained_columns": [
-                    "parent_config_id"
-                ],
-                "referred_table": "wrapper_adunit_config",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "FK_parentConfigId"
-            }
-        ],
-        "wrapper_alert": [
-            {
-                "constrained_columns": [
-                    "category_id"
-                ],
-                "referred_table": "wrapper_alert_category",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_alert_category_fk"
-            },
-            {
-                "constrained_columns": [
-                    "entity_type_id"
-                ],
-                "referred_table": "wrapper_entity_type",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_alert_entity_type_fk"
-            }
-        ],
-        "wrapper_applicable_keys": [
-            {
-                "constrained_columns": [
-                    "entity_type_id"
-                ],
-                "referred_table": "wrapper_entity_type",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_applicable_keys_ibfk_1"
-            },
-            {
-                "constrained_columns": [
-                    "partner_id"
-                ],
-                "referred_table": "wrapper_partner",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_applicable_keys_ibfk_2"
-            },
-            {
-                "constrained_columns": [
-                    "applicable_key_id"
-                ],
-                "referred_table": "wrapper_key_master",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_applicable_keys_ibfk_3"
-            },
-            {
-                "constrained_columns": [
-                    "datatype"
-                ],
-                "referred_table": "wrapper_supported_datatype",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_applicable_keys_ibfk_4"
-            },
-            {
-                "constrained_columns": [
-                    "inherited_entity_type_id"
-                ],
-                "referred_table": "wrapper_entity_type",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_applicable_keys_ibfk_5"
-            }
-        ],
-        "wrapper_config_keys": [
-            {
-                "constrained_columns": [
-                    "parent_id"
-                ],
-                "referred_table": "wrapper_config_keys",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_config_keys_ibfk_1"
-            },
-            {
-                "constrained_columns": [
-                    "data_type"
-                ],
-                "referred_table": "wrapper_supported_datatype",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_config_keys_ibfk_2"
-            }
-        ],
-        "wrapper_config_map": [
-            {
-                "constrained_columns": [
-                    "config_id"
-                ],
-                "referred_table": "wrapper_key_master",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_config_map_ibfk_1"
-            },
-            {
-                "constrained_columns": [
-                    "entity_type_id"
-                ],
-                "referred_table": "wrapper_entity_type",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_config_map_ibfk_2"
-            },
-            {
-                "constrained_columns": [
-                    "partner_id"
-                ],
-                "referred_table": "wrapper_publisher_partner",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_config_map_ibfk_3"
-            }
-        ],
-        "wrapper_custom_key_value": [
-            {
-                "constrained_columns": [
-                    "key_id"
-                ],
-                "referred_table": "wrapper_custom_key",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "key_id_fk"
-            }
-        ],
-        "wrapper_feature_dsp_mapping": [
-            {
-                "constrained_columns": [
-                    "key_id"
-                ],
-                "referred_table": "wrapper_key_master",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "key_id_fsc_fk"
-            }
-        ],
-        "wrapper_global_code_version": [
-            {
-                "constrained_columns": [
-                    "release_type_id"
-                ],
-                "referred_table": "wrapper_release_type",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_global_code_version_ibfk_1"
-            }
-        ],
-        "wrapper_key_map": [
-            {
-                "constrained_columns": [
-                    "key_id"
-                ],
-                "referred_table": "wrapper_key_master",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_key_master_wrapper_key_map_ibfk_1"
-            },
-            {
-                "constrained_columns": [
-                    "new_key_id"
-                ],
-                "referred_table": "wrapper_key_master",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_key_master_wrapper_key_map_ibfk_2"
-            },
-            {
-                "constrained_columns": [
-                    "partner_id"
-                ],
-                "referred_table": "wrapper_partner",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_partner_wrapper_key_map_ibfk_3"
-            }
-        ],
-        "wrapper_live_code": [
-            {
-                "constrained_columns": [
-                    "live_version_id"
-                ],
-                "referred_table": "wrapper_code",
-                "referred_columns": [
-                    "version_id"
-                ],
-                "name": "wrapper_live_code_ibfk_2"
-            },
-            {
-                "constrained_columns": [
-                    "global_code_version_id"
-                ],
-                "referred_table": "wrapper_global_code_version",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_live_code_ibfk_3"
-            },
-            {
-                "constrained_columns": [
-                    "code_source_id"
-                ],
-                "referred_table": "wrapper_code_source",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_live_code_ibfk_4"
-            }
-        ],
-        "wrapper_media_config": [
-            {
-                "constrained_columns": [
-                    "version_id"
-                ],
-                "referred_table": "wrapper_version",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_media_config_ibfk_1"
-            }
-        ],
-        "wrapper_parameter_adserver_macro": [
-            {
-                "constrained_columns": [
-                    "parameter_id"
-                ],
-                "referred_table": "wrapper_ad_parameter",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_parameter_adserver_macro_ibfk_1"
-            },
-            {
-                "constrained_columns": [
-                    "adserver_id"
-                ],
-                "referred_table": "wrapper_tag_adserver",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_parameter_adserver_macro_ibfk_3"
-            }
-        ],
-        "wrapper_parameter_integration_type_mapping": [
-            {
-                "constrained_columns": [
-                    "integration_type_id"
-                ],
-                "referred_table": "wrapper_ad_integration_type",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_parameter_integration_type_mapping_ibfk_1"
-            },
-            {
-                "constrained_columns": [
-                    "parameter_id"
-                ],
-                "referred_table": "wrapper_ad_parameter",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_parameter_integration_type_mapping_ibfk_2"
-            }
-        ],
-        "wrapper_partner": [
-            {
-                "constrained_columns": [
-                    "type"
-                ],
-                "referred_table": "wrapper_partner_type",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_partner_ibfk_1"
-            }
-        ],
-        "wrapper_partner_settings": [
-            {
-                "constrained_columns": [
-                    "partner_id"
-                ],
-                "referred_table": "wrapper_partner",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_partner_settings_ibfk_1"
-            }
-        ],
-        "wrapper_partner_slot_mapping": [
-            {
-                "constrained_columns": [
-                    "version_id"
-                ],
-                "referred_table": "wrapper_version",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "fk_partner_mapping_1"
-            },
-            {
-                "constrained_columns": [
-                    "partner_id"
-                ],
-                "referred_table": "wrapper_publisher_partner",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_partner_slot_mapping_ibfk_1"
-            }
-        ],
-        "wrapper_partner_synonym": [
-            {
-                "constrained_columns": [
-                    "partner_id"
-                ],
-                "referred_table": "wrapper_partner",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_partner_synonym_fk_1"
-            }
-        ],
-        "wrapper_profile": [
-            {
-                "constrained_columns": [
-                    "type"
-                ],
-                "referred_table": "wrapper_profile_type",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_profile_ibfk_1"
-            }
-        ],
-        "wrapper_profile_configuration": [
-            {
-                "constrained_columns": [
-                    "key_id"
-                ],
-                "referred_table": "wrapper_key_master",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_profile_configuration_key_id_fk"
-            },
-            {
-                "constrained_columns": [
-                    "profile_id"
-                ],
-                "referred_table": "wrapper_profile",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_profile_configuration_profile_id_fk"
-            }
-        ],
-        "wrapper_profile_partner_version_template": [
-            {
-                "constrained_columns": [
-                    "profile_id"
-                ],
-                "referred_table": "wrapper_profile",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_profile_partner_version_template_ibfk_1"
-            },
-            {
-                "constrained_columns": [
-                    "partner_id"
-                ],
-                "referred_table": "wrapper_publisher_partner",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_profile_partner_version_template_ibfk_2"
-            },
-            {
-                "constrained_columns": [
-                    "version_id"
-                ],
-                "referred_table": "wrapper_version",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_profile_partner_version_template_ibfk_3"
-            },
-            {
-                "constrained_columns": [
-                    "template_id"
-                ],
-                "referred_table": "wrapper_mapping_template",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_profile_partner_version_template_ibfk_4"
-            }
-        ],
-        "wrapper_profile_site": [
-            {
-                "constrained_columns": [
-                    "profile_id"
-                ],
-                "referred_table": "wrapper_profile",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "FK_ProfileId"
-            }
-        ],
-        "wrapper_profile_site_adunit": [
-            {
-                "constrained_columns": [
-                    "ad_unit_format_id"
-                ],
-                "referred_table": "wrapper_ad_unit_format",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "fk_ad_unit_format_id"
-            },
-            {
-                "constrained_columns": [
-                    "profile_site_id"
-                ],
-                "referred_table": "wrapper_profile_site",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "FK_ProfileSiteId"
-            }
-        ],
-        "wrapper_publisher_feature_mapping": [
-            {
-                "constrained_columns": [
-                    "feature_id"
-                ],
-                "referred_table": "wrapper_feature",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "feature_id_fk"
-            }
-        ],
-        "wrapper_publisher_partner": [
-            {
-                "constrained_columns": [
-                    "partner_id"
-                ],
-                "referred_table": "wrapper_partner",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_publisher_partner_ibfk_1"
-            }
-        ],
-        "wrapper_publisher_partner_vast_tag": [
-            {
-                "constrained_columns": [
-                    "partner_id"
-                ],
-                "referred_table": "wrapper_publisher_partner",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "partner_id_fk"
-            }
-        ],
-        "wrapper_site_adunit_adtag": [
-            {
-                "constrained_columns": [
-                    "profile_site_ad_unit_id"
-                ],
-                "referred_table": "wrapper_profile_site_adunit",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "FK_profileSiteAdUnitId"
-            }
-        ],
-        "wrapper_status": [
-            {
-                "constrained_columns": [
-                    "version_id"
-                ],
-                "referred_table": "wrapper_version",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "fk_status_1"
-            }
-        ],
-        "wrapper_supported_modules": [
-            {
-                "constrained_columns": [
-                    "category_id"
-                ],
-                "referred_table": "wrapper_module_category",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_supported_modules_ibfk_1"
-            }
-        ],
-        "wrapper_tag_template": [
-            {
-                "constrained_columns": [
-                    "platform_id"
-                ],
-                "referred_table": "wrapper_platform",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "fk_platform"
-            }
-        ],
-        "wrapper_version": [
-            {
-                "constrained_columns": [
-                    "profile_id"
-                ],
-                "referred_table": "wrapper_profile",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_version_ibfk_1"
-            }
-        ],
-        "wrapper_version_to_code_map": [
-            {
-                "constrained_columns": [
-                    "version_id"
-                ],
-                "referred_table": "wrapper_version",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_version_to_code_map_ibfk_2"
-            },
-            {
-                "constrained_columns": [
-                    "global_code_version_id"
-                ],
-                "referred_table": "wrapper_global_code_version",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_version_to_code_map_ibfk_3"
-            }
-        ],
-        "wrapper_version_to_code_snippet": [
-            {
-                "constrained_columns": [
-                    "version_id"
-                ],
-                "referred_table": "wrapper_version",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_version_to_snippet_map_abfk1"
-            }
-        ],
-        "wrapper_version_to_module_mapping": [
-            {
-                "constrained_columns": [
-                    "version_id"
-                ],
-                "referred_table": "wrapper_version",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_version_to_module_map_abfk1"
-            },
-            {
-                "constrained_columns": [
-                    "module_id"
-                ],
-                "referred_table": "wrapper_supported_modules",
-                "referred_columns": [
-                    "id"
-                ],
-                "name": "wrapper_version_to_module_map_abfk2"
-            }
-        ]
+        "wrapper_ad_parameter": [{"constrained_columns": ["data_type"],"referred_table": "wrapper_supported_datatype","referred_columns": ["id"],"name": "wrapper_ad_parameter_ibfk_1"},{"constrained_columns": ["parameter_group"],"referred_table": "wrapper_ad_parameter_group","referred_columns": ["id"],"name": "wrapper_ad_parameter_ibfk_2"}],
+        "wrapper_ad_parameter_dependency_map": [{"constrained_columns": ["parent_object_group"],"referred_table": "wrapper_ad_parameter_group","referred_columns": ["id"],"name": "wrapper_ad_parameter_dependency_map_ibfk_1"},{"constrained_columns": ["child_object_group"],"referred_table": "wrapper_ad_parameter_group","referred_columns": ["id"],"name": "wrapper_ad_parameter_dependency_map_ibfk_2"}],
+        "wrapper_ad_parameter_tag_type_mapping": [{"constrained_columns": ["parameter_id"],"referred_table": "wrapper_ad_parameter","referred_columns": ["id"],"name": "wrapper_ad_parameter_tag_type_mapping_ibfk_1"},{"constrained_columns": ["tag_type_id"],"referred_table": "wrapper_tag_type","referred_columns": ["id"],"name": "wrapper_ad_parameter_tag_type_mapping_ibfk_2"}],
+        "wrapper_ad_pod": [{"constrained_columns": ["version_id"],"referred_table": "wrapper_version","referred_columns": ["id"],"name": "wrapper_ad_pod_fk_1"}],
+        "wrapper_ad_unit_config": [{"constrained_columns": ["profile_id"],"referred_table": "wrapper_profile","referred_columns": ["id"],"name": "wrapper_ad_unit_config_ibfk_1"},{"constrained_columns": ["ad_unit_id"],"referred_table": "wrapper_profile_site_adunit","referred_columns": ["id"],"name": "wrapper_ad_unit_config_ibfk_2"},{"constrained_columns": ["config_id"],"referred_table": "wrapper_config_keys","referred_columns": ["id"],"name": "wrapper_ad_unit_config_ibfk_3"}],
+        "wrapper_adunit_config": [{"constrained_columns": ["adunit_id"],"referred_table": "wrapper_profile_site_adunit","referred_columns": ["id"],"name": "FK_adUnitId"},{"constrained_columns": ["config_id"],"referred_table": "wrapper_adunit_config_keys","referred_columns": ["id"],"name": "FK_configId"},{"constrained_columns": ["parent_config_id"],"referred_table": "wrapper_adunit_config","referred_columns": ["id"],"name": "FK_parentConfigId"}],
+        "wrapper_alert": [{"constrained_columns": ["category_id"],"referred_table": "wrapper_alert_category","referred_columns": ["id"],"name": "wrapper_alert_category_fk"},{"constrained_columns": ["entity_type_id"],"referred_table": "wrapper_entity_type","referred_columns": ["id"],"name": "wrapper_alert_entity_type_fk"}],
+        "wrapper_applicable_keys": [{"constrained_columns": ["entity_type_id"],"referred_table": "wrapper_entity_type","referred_columns": ["id"],"name": "wrapper_applicable_keys_ibfk_1"},{"constrained_columns": ["partner_id"],"referred_table": "wrapper_partner","referred_columns": ["id"],"name": "wrapper_applicable_keys_ibfk_2"},{"constrained_columns": ["applicable_key_id"],"referred_table": "wrapper_key_master","referred_columns": ["id"],"name": "wrapper_applicable_keys_ibfk_3"},{"constrained_columns": ["datatype"],"referred_table": "wrapper_supported_datatype","referred_columns": ["id"],"name": "wrapper_applicable_keys_ibfk_4"},{"constrained_columns": ["inherited_entity_type_id"],"referred_table": "wrapper_entity_type","referred_columns": ["id"],"name": "wrapper_applicable_keys_ibfk_5"}],
+        "wrapper_config_keys": [{"constrained_columns": ["parent_id"],"referred_table": "wrapper_config_keys","referred_columns": ["id"],"name": "wrapper_config_keys_ibfk_1"},{"constrained_columns": ["data_type"],"referred_table": "wrapper_supported_datatype","referred_columns": ["id"],"name": "wrapper_config_keys_ibfk_2"}],
+        "wrapper_config_map": [{"constrained_columns": ["config_id"],"referred_table": "wrapper_key_master","referred_columns": ["id"],"name": "wrapper_config_map_ibfk_1"},{"constrained_columns": ["entity_type_id"],"referred_table": "wrapper_entity_type","referred_columns": ["id"],"name": "wrapper_config_map_ibfk_2"},{"constrained_columns": ["partner_id"],"referred_table": "wrapper_publisher_partner","referred_columns": ["id"],"name": "wrapper_config_map_ibfk_3"}],
+        "wrapper_custom_key_value": [{"constrained_columns": ["key_id"],"referred_table": "wrapper_custom_key","referred_columns": ["id"],"name": "key_id_fk"}],
+        "wrapper_feature_dsp_mapping": [{"constrained_columns": ["key_id"],"referred_table": "wrapper_key_master","referred_columns": ["id"],"name": "key_id_fsc_fk"}],
+        "wrapper_global_code_version": [{"constrained_columns": ["release_type_id"],"referred_table": "wrapper_release_type","referred_columns": ["id"],"name": "wrapper_global_code_version_ibfk_1"}],
+        "wrapper_key_map": [{"constrained_columns": ["key_id"],"referred_table": "wrapper_key_master","referred_columns": ["id"],"name": "wrapper_key_master_wrapper_key_map_ibfk_1"},{"constrained_columns": ["new_key_id"],"referred_table": "wrapper_key_master","referred_columns": ["id"],"name": "wrapper_key_master_wrapper_key_map_ibfk_2"},{"constrained_columns": ["partner_id"],"referred_table": "wrapper_partner","referred_columns": ["id"],"name": "wrapper_partner_wrapper_key_map_ibfk_3"}],
+        "wrapper_live_code": [{"constrained_columns": ["live_version_id"],"referred_table": "wrapper_code","referred_columns": ["version_id"],"name": "wrapper_live_code_ibfk_2"},{"constrained_columns": ["global_code_version_id"],"referred_table": "wrapper_global_code_version","referred_columns": ["id"],"name": "wrapper_live_code_ibfk_3"},{"constrained_columns": ["code_source_id"],"referred_table": "wrapper_code_source","referred_columns": ["id"],"name": "wrapper_live_code_ibfk_4"}],
+        "wrapper_media_config": [{"constrained_columns": ["version_id"],"referred_table": "wrapper_version","referred_columns": ["id"],"name": "wrapper_media_config_ibfk_1"}],
+        "wrapper_parameter_adserver_macro": [{"constrained_columns": ["parameter_id"],"referred_table": "wrapper_ad_parameter","referred_columns": ["id"],"name": "wrapper_parameter_adserver_macro_ibfk_1"},{"constrained_columns": ["adserver_id"],"referred_table": "wrapper_tag_adserver","referred_columns": ["id"],"name": "wrapper_parameter_adserver_macro_ibfk_3"}],
+        "wrapper_parameter_integration_type_mapping": [{"constrained_columns": ["integration_type_id"],"referred_table": "wrapper_ad_integration_type","referred_columns": ["id"],"name": "wrapper_parameter_integration_type_mapping_ibfk_1"},{"constrained_columns": ["parameter_id"],"referred_table": "wrapper_ad_parameter","referred_columns": ["id"],"name": "wrapper_parameter_integration_type_mapping_ibfk_2"}],
+        "wrapper_partner": [{"constrained_columns": ["type"],"referred_table": "wrapper_partner_type","referred_columns": ["id"],"name": "wrapper_partner_ibfk_1"}],
+        "wrapper_partner_settings": [{"constrained_columns": ["partner_id"],"referred_table": "wrapper_partner","referred_columns": ["id"],"name": "wrapper_partner_settings_ibfk_1"}],
+        "wrapper_partner_slot_mapping": [{"constrained_columns": ["version_id"],"referred_table": "wrapper_version","referred_columns": ["id"],"name": "fk_partner_mapping_1"},{"constrained_columns": ["partner_id"],"referred_table": "wrapper_publisher_partner","referred_columns": ["id"],"name": "wrapper_partner_slot_mapping_ibfk_1"}],
+        "wrapper_partner_synonym": [{"constrained_columns": ["partner_id"],"referred_table": "wrapper_partner","referred_columns": ["id"],"name": "wrapper_partner_synonym_fk_1"}],
+        "wrapper_profile": [{"constrained_columns": ["type"],"referred_table": "wrapper_profile_type","referred_columns": ["id"],"name": "wrapper_profile_ibfk_1"}],
+        "wrapper_profile_configuration": [{"constrained_columns": ["key_id"],"referred_table": "wrapper_key_master","referred_columns": ["id"],"name": "wrapper_profile_configuration_key_id_fk"},{"constrained_columns": ["profile_id"],"referred_table": "wrapper_profile","referred_columns": ["id"],"name": "wrapper_profile_configuration_profile_id_fk"}],
+        "wrapper_profile_partner_version_template": [{"constrained_columns": ["profile_id"],"referred_table": "wrapper_profile","referred_columns": ["id"],"name": "wrapper_profile_partner_version_template_ibfk_1"},{"constrained_columns": ["partner_id"],"referred_table": "wrapper_publisher_partner","referred_columns": ["id"],"name": "wrapper_profile_partner_version_template_ibfk_2"},{"constrained_columns": ["version_id"],"referred_table": "wrapper_version","referred_columns": ["id"],"name": "wrapper_profile_partner_version_template_ibfk_3"},{"constrained_columns": ["template_id"],"referred_table": "wrapper_mapping_template","referred_columns": ["id"],"name": "wrapper_profile_partner_version_template_ibfk_4"}],
+        "wrapper_profile_site": [{"constrained_columns": ["profile_id"],"referred_table": "wrapper_profile","referred_columns": ["id"],"name": "FK_ProfileId"}],
+        "wrapper_profile_site_adunit": [{"constrained_columns": ["ad_unit_format_id"],"referred_table": "wrapper_ad_unit_format","referred_columns": ["id"],"name": "fk_ad_unit_format_id"},{"constrained_columns": ["profile_site_id"],"referred_table": "wrapper_profile_site","referred_columns": ["id"],"name": "FK_ProfileSiteId"}],
+        "wrapper_publisher_feature_mapping": [{"constrained_columns": ["feature_id"],"referred_table": "wrapper_feature","referred_columns": ["id"],"name": "feature_id_fk"}],
+        "wrapper_publisher_partner": [{"constrained_columns": ["partner_id"],"referred_table": "wrapper_partner","referred_columns": ["id"],"name": "wrapper_publisher_partner_ibfk_1"}],
+        "wrapper_publisher_partner_vast_tag": [{"constrained_columns": ["partner_id"],"referred_table": "wrapper_publisher_partner","referred_columns": ["id"],"name": "partner_id_fk"}],
+        "wrapper_site_adunit_adtag": [{"constrained_columns": ["profile_site_ad_unit_id"],"referred_table": "wrapper_profile_site_adunit","referred_columns": ["id"],"name": "FK_profileSiteAdUnitId"}],
+        "wrapper_status": [{"constrained_columns": ["version_id"],"referred_table": "wrapper_version","referred_columns": ["id"],"name": "fk_status_1"}],
+        "wrapper_supported_modules": [{"constrained_columns": ["category_id"],"referred_table": "wrapper_module_category","referred_columns": ["id"],"name": "wrapper_supported_modules_ibfk_1"}],
+        "wrapper_tag_template": [{"constrained_columns": ["platform_id"],"referred_table": "wrapper_platform","referred_columns": ["id"],"name": "fk_platform"}],
+        "wrapper_version": [{"constrained_columns": ["profile_id"],"referred_table": "wrapper_profile","referred_columns": ["id"],"name": "wrapper_version_ibfk_1"}],
+        "wrapper_version_to_code_map": [{"constrained_columns": ["version_id"],"referred_table": "wrapper_version","referred_columns": ["id"],"name": "wrapper_version_to_code_map_ibfk_2"},{"constrained_columns": ["global_code_version_id"],"referred_table": "wrapper_global_code_version","referred_columns": ["id"],"name": "wrapper_version_to_code_map_ibfk_3"}],
+        "wrapper_version_to_code_snippet": [{"constrained_columns": ["version_id"],"referred_table": "wrapper_version","referred_columns": ["id"],"name": "wrapper_version_to_snippet_map_abfk1"}],
+        "wrapper_version_to_module_mapping": [{"constrained_columns": ["version_id"],"referred_table": "wrapper_version","referred_columns": ["id"],"name": "wrapper_version_to_module_map_abfk1"},{"constrained_columns": ["module_id"],"referred_table": "wrapper_supported_modules","referred_columns": ["id"],"name": "wrapper_version_to_module_map_abfk2"}]
     }
 }
-IMPORTANT: Verify table-column relationships carefully
-DO NOT mix columns from one table with another table
-Each column MUST be used with its correct parent table
+IMPORTANT: Verify table-column relationships carefully.
+DO NOT mix columns from one table with another table. Each column MUST be used with its correct parent table.
 Example: wrapper_global_code_version.release_name is correct
 Example: wrapper_profile.release_name is INCORRECT (release_name belongs to wrapper_global_code_version)
 Similarly: global_code_version_id belongs to wrapper_version_to_code_map and not wrapper_version
 and similarly there is no table with name 
+KomliAdServer.publisher is the table which stores the information about the publishers, the pub_id field used in the above table is the id from KomliAdServer.publisher.
 wrapper_global_code_version.release_name should always start with 'v', so if input is '26.16.0' make it 'v26.16.0'
-wrapper_global_code_version.prebid_base_version should always start with 'v', so if input is '7.39' make it 'v7.39.0' if the input is '7.52.1' make it 'v7.52.1'
+wrapper_global_code_version.prebid_base_version should always start with 'v', so if input is '7.39' make it 'v7.39.0' if the input is '7.52.1' make it 'v7.52.1'.
+whenever "Prebid" or "Prebid version" is said, consider the field name prebid_base_version and whenever "OpenWrap" or "Wrapper" or "Openwrap version" or "openwrap release name" is said consider release_name.
+When prebid version or openwrap release name is asked in a single digit e.g Prebid 8 or 8.21 then update the search query with LIKE operator and 'v8%' or 'v8.21%'as input.
+Whenever user says publishers it is related to publisher.id of KomliAdServer.publisher or pub_id in any other table.
 Be specific, when you use the column name. Use the exact column name and related table name, dont mix and match the table names.
 Include column name headers in the query results.
-if only is used in the input, use only the related column names and not all or *
+if "only" is used in the input, use only the related column names and not all or *
 
+** INVALID QUERY FORMATS:
+query which starts with "SELECT TOP 10" is invalid, instead use LIMIT to get a selected number of records
+
+** OUTPUT:
 Always provide your answer in the JSON format below:
 
 { "summary": "your-summary", "query":  "your-query" }
@@ -1885,4 +1202,6 @@ Always include all columns in the table.
 If the resulting query is non-executable, replace "your-query" with NA, but still substitute "your-query" with a summary of the query.
 Do not use MySQL syntax. 
 Do not add "\n" to the query only add a space
-Always limit the SQL Query to 100 rows. and do not use ORDER BY or OFFSET ROWS'''
+Always limit the SQL Query to 100 rows. and do not use ORDER BY unless specified externally and dont use OFFSET '''
+
+

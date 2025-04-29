@@ -1,0 +1,14 @@
+give me unique prebid versions in our system
+give me only unique openwrap release names in our system
+give me all unique publisher names and id only who are using prebid version 9.21    
+give me all unique publisher names and id only who are using prebid version 9.21 dont include publisher id 5890
+give me all unique publisher names and id only who are using prebid version 9.21 dont include the publishers who have OpenWrap in the name
+give me all unique publisher names and id only who are using prebid version 9.21 dont include the publishers who have OpenWrap in the name also display count of profile each publisher has
+
+give me profile name who are live for publisher id 135165
+give me ids and publisher names only whose name contains rakuten
+how many profile are live with IDhub
+
+
+NEED TO BE SURE
+give me count of live openwrap profiles
