@@ -1,6 +1,7 @@
 # hackathon2025
 
 Changes for AZHAR folder
+
 For running the script locally, run the command
 
 ```pip3 install -r requirements.txt```
