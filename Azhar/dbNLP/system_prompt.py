@@ -699,9 +699,10 @@ Use the following database schema when creating your answers:
                 {
             "table_name": "wrapper_key_master",
             "fields": [{"name": "id","display_name": "Id","description": null,"effective_type": "type/Integer"},
-                {"name": "name","display_name": "Name","description": null,"effective_type": "type/Text"},
-                {"name": "key_name","display_name": "Key Name","description": null,"effective_type": "type/Text"}
-            ]
+                {"name": "name","display_name": "Name","description": "this field will store name of the features e.g: floors, send all bids, gdpr, ccpa","effective_type": "type/Text"},
+                {"name": "key_name","display_name": "Key Name","description": "this will store key values e.g: floorPriceModuleEnabled, gdpr, ccpa, sendAllBids, usePBJSKeys (this will be 1 for hb or hb_ keys & 0 for pwt keys), adServerCurrency ","effective_type": "type/Text"}
+            ],
+            "description": "the features will be displayed in this table e.g floors, sendallbids, consent management, ab test etc"
         },
                 {
             "table_name": "wrapper_live_code",
@@ -855,7 +856,7 @@ Use the following database schema when creating your answers:
                 {"name": "name","display_name": "Name","description": null,"effective_type": "type/Text"},
                 {"name": "pub_id","display_name": "Pub Id","description": "for which publisher id this profile was created. one publisher can have multiple profiles","effective_type": "type/BigInteger"},
                 {"name": "is_disabled","display_name": "Is Disabled","description": null,"effective_type": "type/Boolean"},
-                {"name": "type","display_name": "Type","description": "1 means OpenWrap and 2 means IDhub or identity hub","effective_type": "type/Boolean"},
+                {"name": "type","display_name": "Type","description": "1 means OpenWrap and 2 means IDhub or identity hub or id hub","effective_type": "type/Boolean"},
                 {"name": "api_version","display_name": "Api Version","description": null,"effective_type": "type/Boolean"},
                 {"name": "platform","display_name": "Platform","description": null,"effective_type": "type/Text"},
                 {"name": "is_action_required","display_name": "Is Action Required","description": null,"effective_type": "type/Boolean"}
@@ -1177,9 +1178,12 @@ Example: wrapper_global_code_version.release_name is correct
 Example: wrapper_profile.release_name is INCORRECT (release_name belongs to wrapper_global_code_version)
 Similarly: global_code_version_id belongs to wrapper_version_to_code_map and not wrapper_version
 and similarly there is no table with name 
+Whenever you are using a check on 'true' or 'false' value, also add a check on '1' or '0'.
+Value for features such as SendAllBids and FLoors enabled will be stored in wrapper_config_map.value.
 KomliAdServer.publisher is the table which stores the information about the publishers, the pub_id field used in the above table is the id from KomliAdServer.publisher.
 wrapper_global_code_version.release_name should always start with 'v', so if input is '26.16.0' make it 'v26.16.0'
 wrapper_global_code_version.prebid_base_version should always start with 'v', so if input is '7.39' make it 'v7.39.0' if the input is '7.52.1' make it 'v7.52.1'.
+When searching within string data types, perform the action in a case-insensitive manner unless the user specifies otherwise.
 whenever "Prebid" or "Prebid version" is said, consider the field name prebid_base_version and whenever "OpenWrap" or "Wrapper" or "Openwrap version" or "openwrap release name" is said consider release_name.
 When prebid version or openwrap release name is asked in a single digit e.g Prebid 8 or 8.21 then update the search query with LIKE operator and 'v8%' or 'v8.21%'as input.
 Whenever user says publishers it is related to publisher.id of KomliAdServer.publisher or pub_id in any other table.
